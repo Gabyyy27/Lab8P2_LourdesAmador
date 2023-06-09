@@ -28,79 +28,83 @@ public class Simulador extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_AgregarEvento = new javax.swing.JDialog();
-        tcontrasenacliente = new javax.swing.JTextField();
-        tedadcliente = new javax.swing.JTextField();
-        btAgregarCliente = new javax.swing.JButton();
+        LUGAR_EVENTO = new javax.swing.JTextField();
+        CIUDAD_EVENTO = new javax.swing.JTextField();
+        BOTON_AGREGAR_EVENTO = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tedadcliente1 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jd_Login = new javax.swing.JDialog();
+        FECHA_EVENTO = new com.toedter.calendar.JDateChooser();
+        CANT_PERSONAS_EVENTO = new javax.swing.JSpinner();
+        jd_AgregarUsuario = new javax.swing.JDialog();
         tcont = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         btIngresar = new javax.swing.JButton();
         tusuar = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        NOMBRE_SOLISTA1 = new javax.swing.JTextField();
+        EDAD_SOLISTA1 = new javax.swing.JSpinner();
+        jLabel36 = new javax.swing.JLabel();
         jd_TipoArtista = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         REGISTRAR_SOLISTA = new javax.swing.JButton();
         REGISTRAR_BANDA = new javax.swing.JButton();
         jd_AgregarSolista = new javax.swing.JDialog();
-        btAgregarArtista1 = new javax.swing.JButton();
+        BOTON_AGREGAR_SOLISTA = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        tnomartista1 = new javax.swing.JTextField();
-        tcontrasenaartista1 = new javax.swing.JTextField();
-        tnomartistico1 = new javax.swing.JTextField();
-        tedadartista1 = new javax.swing.JTextField();
+        USUARIO_SOLISTA = new javax.swing.JTextField();
+        GENERO_SOLISTA = new javax.swing.JTextField();
+        NOMBRE_SOLISTA = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        tnomartista2 = new javax.swing.JTextField();
+        CONTRASEÑA_SOLISTA = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        LISTA_CANCIONES_SOLISTA = new javax.swing.JTable();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        tedadartista2 = new javax.swing.JTextField();
+        CANCION_SOLISTA = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        tedadartista3 = new javax.swing.JTextField();
+        EDAD_SOLISTA = new javax.swing.JSpinner();
+        DURACION_SOLISTA = new javax.swing.JSpinner();
         jd_AgregarBanda = new javax.swing.JDialog();
-        btAgregarArtista2 = new javax.swing.JButton();
+        BOTON_AGREGAR_BANDA = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        tnomartista3 = new javax.swing.JTextField();
-        tcontrasenaartista2 = new javax.swing.JTextField();
-        tnomartistico2 = new javax.swing.JTextField();
-        tedadartista4 = new javax.swing.JTextField();
+        USUARIO_BANDA = new javax.swing.JTextField();
+        NOMBRE_BANDA = new javax.swing.JTextField();
+        GENERO_BANDA = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        tnomartista4 = new javax.swing.JTextField();
+        CONTRASEÑA_BANDA = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        LISTA_CANCIONES_BANDA = new javax.swing.JTable();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        tedadartista5 = new javax.swing.JTextField();
+        CANCION_BANDA = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        tedadartista6 = new javax.swing.JTextField();
+        NUM_INTEGRANTES_BANDA = new javax.swing.JSpinner();
+        DURACION_BANDA = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         REGISTRAR_ARTISTA = new javax.swing.JButton();
         REGISTRAR_EVENTO = new javax.swing.JButton();
         REGISTRAR_USUARIO = new javax.swing.JButton();
 
-        btAgregarCliente.setText("Agregar");
-        btAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        BOTON_AGREGAR_EVENTO.setText("Agregar");
+        BOTON_AGREGAR_EVENTO.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btAgregarClienteMouseClicked(evt);
+                BOTON_AGREGAR_EVENTOMouseClicked(evt);
             }
         });
 
@@ -127,23 +131,23 @@ public class Simulador extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_AgregarEventoLayout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addGap(18, 18, 18)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jd_AgregarEventoLayout.createSequentialGroup()
+                            .addComponent(FECHA_EVENTO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_AgregarEventoLayout.createSequentialGroup()
                             .addComponent(jLabel11)
                             .addGap(18, 18, 18)
-                            .addComponent(tedadcliente1))
+                            .addComponent(CANT_PERSONAS_EVENTO))
                         .addGroup(jd_AgregarEventoLayout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addGap(18, 18, 18)
-                            .addComponent(tcontrasenacliente))
+                            .addComponent(LUGAR_EVENTO))
                         .addGroup(jd_AgregarEventoLayout.createSequentialGroup()
                             .addComponent(jLabel9)
                             .addGap(18, 18, 18)
-                            .addComponent(tedadcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(CIUDAD_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarEventoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BOTON_AGREGAR_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
         jd_AgregarEventoLayout.setVerticalGroup(
@@ -154,32 +158,32 @@ public class Simulador extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jd_AgregarEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FECHA_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jd_AgregarEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(tcontrasenacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LUGAR_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jd_AgregarEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(tedadcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 30, Short.MAX_VALUE)
+                    .addComponent(CIUDAD_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(jd_AgregarEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(tedadcliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CANT_PERSONAS_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(BOTON_AGREGAR_EVENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel12.setText("Ingresar al Sistema");
+        jLabel12.setText("Agregar Usuario");
 
         jLabel13.setText("Usuario:");
 
         jLabel14.setText("Contraseña:");
 
-        btIngresar.setText("Ingresar");
+        btIngresar.setText("Agregar");
         btIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btIngresarMouseClicked(evt);
@@ -207,46 +211,68 @@ public class Simulador extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jd_LoginLayout = new javax.swing.GroupLayout(jd_Login.getContentPane());
-        jd_Login.getContentPane().setLayout(jd_LoginLayout);
-        jd_LoginLayout.setHorizontalGroup(
-            jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_LoginLayout.createSequentialGroup()
-                .addGroup(jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_LoginLayout.createSequentialGroup()
+        jLabel35.setText("Nombre:");
+
+        jLabel36.setText("Edad:");
+
+        javax.swing.GroupLayout jd_AgregarUsuarioLayout = new javax.swing.GroupLayout(jd_AgregarUsuario.getContentPane());
+        jd_AgregarUsuario.getContentPane().setLayout(jd_AgregarUsuarioLayout);
+        jd_AgregarUsuarioLayout.setHorizontalGroup(
+            jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jLabel12))
-                    .addGroup(jd_LoginLayout.createSequentialGroup()
+                    .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_LoginLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(11, 11, 11)))
-                        .addGap(38, 38, 38)
-                        .addGroup(jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tcont, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                .addComponent(tusuar)))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
+                                .addComponent(jLabel35)
+                                .addGap(18, 18, 18)
+                                .addComponent(NOMBRE_SOLISTA1))
+                            .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
+                                .addComponent(jLabel36)
+                                .addGap(18, 18, 18)
+                                .addComponent(EDAD_SOLISTA1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tcont, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarUsuarioLayout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tusuar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(btIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(199, 382, Short.MAX_VALUE))
         );
-        jd_LoginLayout.setVerticalGroup(
-            jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_LoginLayout.createSequentialGroup()
+        jd_AgregarUsuarioLayout.setVerticalGroup(
+            jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel12)
                 .addGap(31, 31, 31)
-                .addGroup(jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(tusuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jd_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(tcont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(NOMBRE_SOLISTA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(EDAD_SOLISTA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addComponent(btIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -308,15 +334,15 @@ public class Simulador extends javax.swing.JFrame {
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
-        btAgregarArtista1.setText("Agregar");
-        btAgregarArtista1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BOTON_AGREGAR_SOLISTA.setText("Agregar");
+        BOTON_AGREGAR_SOLISTA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btAgregarArtista1MouseClicked(evt);
+                BOTON_AGREGAR_SOLISTAMouseClicked(evt);
             }
         });
-        btAgregarArtista1.addActionListener(new java.awt.event.ActionListener() {
+        BOTON_AGREGAR_SOLISTA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAgregarArtista1ActionPerformed(evt);
+                BOTON_AGREGAR_SOLISTAActionPerformed(evt);
             }
         });
 
@@ -333,7 +359,7 @@ public class Simulador extends javax.swing.JFrame {
 
         jLabel20.setText("Nombre:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        LISTA_CANCIONES_SOLISTA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -344,7 +370,7 @@ public class Simulador extends javax.swing.JFrame {
                 "Nombre Cancion", "Duracion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(LISTA_CANCIONES_SOLISTA);
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel21.setText("Lista de Canciones");
@@ -368,36 +394,36 @@ public class Simulador extends javax.swing.JFrame {
                             .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addGap(18, 18, 18)
-                                .addComponent(tedadartista3))
+                                .addComponent(DURACION_SOLISTA))
                             .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
                                 .addComponent(jLabel23)
                                 .addGap(18, 18, 18)
-                                .addComponent(tedadartista2)))
+                                .addComponent(CANCION_SOLISTA)))
                         .addGap(108, 108, 108)
-                        .addComponent(btAgregarArtista1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BOTON_AGREGAR_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90))
                     .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
                         .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(18, 18, 18)
-                                .addComponent(tnomartista1))
-                            .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(tedadartista1))
+                                .addComponent(USUARIO_SOLISTA))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarSolistaLayout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
-                                .addComponent(tnomartista2))
-                            .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(18, 18, 18)
-                                .addComponent(tcontrasenaartista1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CONTRASEÑA_SOLISTA))
                             .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tnomartistico1)))
+                                .addComponent(GENERO_SOLISTA, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                            .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
+                                .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel17))
+                                .addGap(18, 18, 18)
+                                .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NOMBRE_SOLISTA)
+                                    .addComponent(EDAD_SOLISTA))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarSolistaLayout.createSequentialGroup()
@@ -426,7 +452,7 @@ public class Simulador extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(tnomartista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(USUARIO_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_AgregarSolistaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel21)))
@@ -435,46 +461,46 @@ public class Simulador extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(tnomartista2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CONTRASEÑA_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(tcontrasenaartista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(EDAD_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
-                            .addComponent(tedadartista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NOMBRE_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarSolistaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)))
                 .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tnomartistico1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GENERO_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel22)
                 .addGap(18, 18, 18)
                 .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(tedadartista2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAgregarArtista1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CANCION_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BOTON_AGREGAR_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jd_AgregarSolistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel24)
-                    .addComponent(tedadartista3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DURACION_SOLISTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        btAgregarArtista2.setText("Agregar");
-        btAgregarArtista2.addMouseListener(new java.awt.event.MouseAdapter() {
+        BOTON_AGREGAR_BANDA.setText("Agregar");
+        BOTON_AGREGAR_BANDA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btAgregarArtista2MouseClicked(evt);
+                BOTON_AGREGAR_BANDAMouseClicked(evt);
             }
         });
-        btAgregarArtista2.addActionListener(new java.awt.event.ActionListener() {
+        BOTON_AGREGAR_BANDA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAgregarArtista2ActionPerformed(evt);
+                BOTON_AGREGAR_BANDAActionPerformed(evt);
             }
         });
 
@@ -491,7 +517,7 @@ public class Simulador extends javax.swing.JFrame {
 
         jLabel30.setText("Nombre:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        LISTA_CANCIONES_BANDA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -502,7 +528,7 @@ public class Simulador extends javax.swing.JFrame {
                 "Nombre Cancion", "Duracion"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(LISTA_CANCIONES_BANDA);
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel31.setText("Lista de Canciones");
@@ -526,36 +552,36 @@ public class Simulador extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel34)
                                 .addGap(18, 18, 18)
-                                .addComponent(tedadartista6))
+                                .addComponent(DURACION_BANDA))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel33)
                                 .addGap(18, 18, 18)
-                                .addComponent(tedadartista5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(CANCION_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btAgregarArtista2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BOTON_AGREGAR_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84))
                     .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
                         .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel25)
                                 .addGap(18, 18, 18)
-                                .addComponent(tnomartista3))
+                                .addComponent(USUARIO_BANDA))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel26)
                                 .addGap(18, 18, 18)
-                                .addComponent(tnomartista4))
+                                .addComponent(CONTRASEÑA_BANDA))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel30)
                                 .addGap(18, 18, 18)
-                                .addComponent(tcontrasenaartista2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NOMBRE_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addGap(18, 18, 18)
-                                .addComponent(tedadartista4))
+                                .addComponent(NUM_INTEGRANTES_BANDA))
                             .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
                                 .addComponent(jLabel28)
                                 .addGap(18, 18, 18)
-                                .addComponent(tnomartistico2)))
+                                .addComponent(GENERO_BANDA)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarBandaLayout.createSequentialGroup()
@@ -583,42 +609,42 @@ public class Simulador extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
-                            .addComponent(tnomartista3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(USUARIO_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel31)))
                 .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(24, 24, 24)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jd_AgregarBandaLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26)
-                            .addComponent(tnomartista4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CONTRASEÑA_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tcontrasenaartista2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NOMBRE_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel30))
-                        .addGap(28, 28, 28)
-                        .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(31, 31, 31)
+                        .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(tedadartista4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
+                            .addComponent(NUM_INTEGRANTES_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
                         .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
-                            .addComponent(tnomartistico2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(GENERO_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 25, 25)
                 .addComponent(jLabel32)
                 .addGap(18, 18, 18)
                 .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(tedadartista5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAgregarArtista2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CANCION_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BOTON_AGREGAR_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jd_AgregarBandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
-                    .addComponent(tedadartista6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DURACION_BANDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -749,10 +775,10 @@ public class Simulador extends javax.swing.JFrame {
 
     private void REGISTRAR_USUARIOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_REGISTRAR_USUARIOMouseClicked
         // TODO add your handling code here:
-        jd_Login.pack();
-        jd_Login.setLocationRelativeTo(this);
-        jd_Login.setModal(true);
-        jd_Login.setVisible(true);
+        jd_AgregarUsuario.pack();
+        jd_AgregarUsuario.setLocationRelativeTo(this);
+        jd_AgregarUsuario.setModal(true);
+        jd_AgregarUsuario.setVisible(true);
 
     }//GEN-LAST:event_REGISTRAR_USUARIOMouseClicked
 
@@ -761,14 +787,14 @@ public class Simulador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_REGISTRAR_USUARIOActionPerformed
 
-    private void btAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarClienteMouseClicked
+    private void BOTON_AGREGAR_EVENTOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_EVENTOMouseClicked
         // TODO add your handling code here:
         String nombre, contrasena, nom_art;
         int edad;
         try {
             nombre = tnomcliente.getText();
-            contrasena = tcontrasenacliente.getText();
-            edad = Integer.parseInt(tedadcliente.getText());
+            contrasena = LUGAR_EVENTO.getText();
+            edad = Integer.parseInt(CIUDAD_EVENTO.getText());
 
             Cliente p = new Cliente(nombre, contrasena, edad);
 
@@ -777,8 +803,8 @@ public class Simulador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,
                 "Valores Ingresado Correctamente");
             tnomcliente.setText("");
-            tcontrasenacliente.setText("");
-            tedadcliente.setText("");
+            LUGAR_EVENTO.setText("");
+            CIUDAD_EVENTO.setText("");
 
             jd_AgregarEvento.setVisible(false);
 
@@ -787,7 +813,7 @@ public class Simulador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,
                 "Ocurrio un error y no se guardaron los datos");
         }
-    }//GEN-LAST:event_btAgregarClienteMouseClicked
+    }//GEN-LAST:event_BOTON_AGREGAR_EVENTOMouseClicked
 
     private void btIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btIngresarMouseClicked
         // TODO add your handling code here:
@@ -811,7 +837,7 @@ public class Simulador extends javax.swing.JFrame {
             arbolcliente.setEnabled(true);
             arbolartista.setEnabled(true);
 
-            jd_Login.setVisible(false);
+            jd_AgregarUsuario.setVisible(false);
             jd_Ingresar.setVisible(false);
 
         }else{
@@ -873,21 +899,21 @@ public class Simulador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_REGISTRAR_BANDAActionPerformed
 
-    private void btAgregarArtista1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarArtista1MouseClicked
+    private void BOTON_AGREGAR_SOLISTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_SOLISTAMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAgregarArtista1MouseClicked
+    }//GEN-LAST:event_BOTON_AGREGAR_SOLISTAMouseClicked
 
-    private void btAgregarArtista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarArtista1ActionPerformed
+    private void BOTON_AGREGAR_SOLISTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_SOLISTAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAgregarArtista1ActionPerformed
+    }//GEN-LAST:event_BOTON_AGREGAR_SOLISTAActionPerformed
 
-    private void btAgregarArtista2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarArtista2MouseClicked
+    private void BOTON_AGREGAR_BANDAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_BANDAMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAgregarArtista2MouseClicked
+    }//GEN-LAST:event_BOTON_AGREGAR_BANDAMouseClicked
 
-    private void btAgregarArtista2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarArtista2ActionPerformed
+    private void BOTON_AGREGAR_BANDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_BANDAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAgregarArtista2ActionPerformed
+    }//GEN-LAST:event_BOTON_AGREGAR_BANDAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -925,16 +951,37 @@ public class Simulador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BOTON_AGREGAR_BANDA;
+    private javax.swing.JButton BOTON_AGREGAR_EVENTO;
+    private javax.swing.JButton BOTON_AGREGAR_SOLISTA;
+    private javax.swing.JTextField CANCION_BANDA;
+    private javax.swing.JTextField CANCION_SOLISTA;
+    private javax.swing.JSpinner CANT_PERSONAS_EVENTO;
+    private javax.swing.JTextField CIUDAD_EVENTO;
+    private javax.swing.JTextField CONTRASEÑA_BANDA;
+    private javax.swing.JTextField CONTRASEÑA_SOLISTA;
+    private javax.swing.JSpinner DURACION_BANDA;
+    private javax.swing.JSpinner DURACION_SOLISTA;
+    private javax.swing.JSpinner EDAD_SOLISTA;
+    private javax.swing.JSpinner EDAD_SOLISTA1;
+    private com.toedter.calendar.JDateChooser FECHA_EVENTO;
+    private javax.swing.JTextField GENERO_BANDA;
+    private javax.swing.JTextField GENERO_SOLISTA;
+    private javax.swing.JTable LISTA_CANCIONES_BANDA;
+    private javax.swing.JTable LISTA_CANCIONES_SOLISTA;
+    private javax.swing.JTextField LUGAR_EVENTO;
+    private javax.swing.JTextField NOMBRE_BANDA;
+    private javax.swing.JTextField NOMBRE_SOLISTA;
+    private javax.swing.JTextField NOMBRE_SOLISTA1;
+    private javax.swing.JSpinner NUM_INTEGRANTES_BANDA;
     private javax.swing.JButton REGISTRAR_ARTISTA;
     private javax.swing.JButton REGISTRAR_BANDA;
     private javax.swing.JButton REGISTRAR_EVENTO;
     private javax.swing.JButton REGISTRAR_SOLISTA;
     private javax.swing.JButton REGISTRAR_USUARIO;
-    private javax.swing.JButton btAgregarArtista1;
-    private javax.swing.JButton btAgregarArtista2;
-    private javax.swing.JButton btAgregarCliente;
+    private javax.swing.JTextField USUARIO_BANDA;
+    private javax.swing.JTextField USUARIO_SOLISTA;
     private javax.swing.JButton btIngresar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -961,6 +1008,8 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -968,31 +1017,12 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JDialog jd_AgregarBanda;
     private javax.swing.JDialog jd_AgregarEvento;
     private javax.swing.JDialog jd_AgregarSolista;
-    private javax.swing.JDialog jd_Login;
+    private javax.swing.JDialog jd_AgregarUsuario;
     private javax.swing.JDialog jd_TipoArtista;
     private javax.swing.JTextField tcont;
-    private javax.swing.JTextField tcontrasenaartista1;
-    private javax.swing.JTextField tcontrasenaartista2;
-    private javax.swing.JTextField tcontrasenacliente;
-    private javax.swing.JTextField tedadartista1;
-    private javax.swing.JTextField tedadartista2;
-    private javax.swing.JTextField tedadartista3;
-    private javax.swing.JTextField tedadartista4;
-    private javax.swing.JTextField tedadartista5;
-    private javax.swing.JTextField tedadartista6;
-    private javax.swing.JTextField tedadcliente;
-    private javax.swing.JTextField tedadcliente1;
-    private javax.swing.JTextField tnomartista1;
-    private javax.swing.JTextField tnomartista2;
-    private javax.swing.JTextField tnomartista3;
-    private javax.swing.JTextField tnomartista4;
-    private javax.swing.JTextField tnomartistico1;
-    private javax.swing.JTextField tnomartistico2;
     private javax.swing.JTextField tusuar;
     // End of variables declaration//GEN-END:variables
 }
