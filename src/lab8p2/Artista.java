@@ -11,49 +11,44 @@ import java.util.ArrayList;
  *
  * @author Lourdes
  */
-public class Artista {
+public abstract class Artista {
     private String usuario;
     private String contraseña;
     private String nombre;
-    private int edad;
     private String generoMusical;
     private ArrayList<Cancion> listaCanciones;
-
-    public Artista(String usuario, String contraseña, String nombre, int edad, String generoMusical) {
+    
+    public Artista(String usuario, String contraseña, String nombre, String generoMusical) {
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.nombre = nombre;
-        this.edad = edad;
         this.generoMusical = generoMusical;
         this.listaCanciones = new ArrayList<>();
     }
-
+    
     public String getUsuario() {
         return usuario;
     }
-
+    
     public String getContraseña() {
         return contraseña;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
-
-    public int getEdad() {
-        return edad;
-    }
-
+    
     public String getGeneroMusical() {
         return generoMusical;
     }
-
+    
     public ArrayList<Cancion> getListaCanciones() {
         return listaCanciones;
     }
-
+    
     public void agregarCancion(Cancion cancion) {
         listaCanciones.add(cancion);
     }
 }
+
 
