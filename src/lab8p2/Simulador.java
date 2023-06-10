@@ -7,11 +7,15 @@ package lab8p2;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,12 +24,16 @@ import javax.swing.Timer;
 public class Simulador extends javax.swing.JFrame {
 
     private List<Evento> listaEventos = new ArrayList<>();
+    private List<Solista> listaSolista = new ArrayList<>();
+    //  private List<Cancion>  listaCancion = new ArrayList<>();
+    private DefaultTableModel CANCIONES_SOLISTASModel;
 
     /**
      * Creates new form Simulador
      */
     public Simulador() {
         initComponents();
+        CANCIONES_SOLISTASModel = new DefaultTableModel();
     }
 
     /**
@@ -1122,32 +1130,7 @@ public class Simulador extends javax.swing.JFrame {
 
 
     private void btIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btIngresarMouseClicked
-        // TODO add your handling code here:
-        boolean bandera = false;
-        for (Usuario temp : usuarios) {
-            if (temp.getUsername().equals(tusuar.getText())
-                    && temp.getPassword().equals(tcont.getText())) {
 
-                bandera = true;
-                break;
-            }
-        }
-
-        if (bandera) {
-            tusuar.setText("");
-            tcont.setText("");
-            jButton1.setEnabled(false);
-            verusuario.setEnabled(true);
-            salirusuario.setEnabled(true);
-            arbolcliente.setEnabled(true);
-            arbolartista.setEnabled(true);
-
-            jd_AgregarUsuario.setVisible(false);
-            jd_Ingresar.setVisible(false);
-
-        } else {
-            JOptionPane.showMessageDialog(jd_Ingresar, "Usuario Equivocado");
-        }
     }//GEN-LAST:event_btIngresarMouseClicked
 
     private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
@@ -1205,8 +1188,66 @@ public class Simulador extends javax.swing.JFrame {
     }//GEN-LAST:event_REGISTRAR_BANDAActionPerformed
 
     private void BOTON_AGREGAR_SOLISTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_SOLISTAMouseClicked
-        // TODO add your handling code here:
+        // Obtener los datos ingresados por el usuario
+        String usuario = USUARIO_SOLISTA.getText();
+        String contraseña = CONTRASEÑA_SOLISTA.getText();
+        String nombre = NOMBRE_SOLISTA.getText();
+        String generoMusical = GENERO_SOLISTA.getText();
+        int edad = (int) EDAD_SOLISTA.getValue();
+
+        // Crear una instancia del solista
+        Solista solista = new Solista(usuario, contraseña, nombre, generoMusical, edad);
+
+        // Agregar un tiempo de espera de 5 segundos antes de guardar
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Guardar el solista en la base de datos, archivo, etc.
+                guardarSolista(solista);
+
+                // Mostrar un mensaje de confirmación
+                JOptionPane.showMessageDialog(null, "El solista se ha creado exitosamente");
+
+                // Restablecer los campos de entrada
+                USUARIO_SOLISTA.setText("");
+                CONTRASEÑA_SOLISTA.setText("");
+                NOMBRE_SOLISTA.setText("");
+                GENERO_SOLISTA.setText("");
+                EDAD_SOLISTA.setValue(0);
+            }
+        });
+        timer.setRepeats(false); // Solo se ejecutará una vez
+
+        timer.start();
+
+
     }//GEN-LAST:event_BOTON_AGREGAR_SOLISTAMouseClicked
+
+    public void guardarSolista(Solista solista) {
+        try {
+            // Crear un objeto FileWriter para escribir en el archivo
+            FileWriter fileWriter = new FileWriter("solistas.txt", true);
+
+            // Crear un objeto PrintWriter para escribir en el archivo de manera formateada
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+
+            // Escribir los datos del solista en el archivo
+            printWriter.println(solista.getUsuario());
+            printWriter.println(solista.getContraseña());
+            printWriter.println(solista.getNombre());
+            printWriter.println(solista.getGeneroMusical());
+            printWriter.println(solista.getEdad());
+
+            // Cerrar los flujos de escritura
+            printWriter.close();
+            fileWriter.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al guardar el solista en el archivo");
+            e.printStackTrace();
+        }
+    }
+
 
     private void BOTON_AGREGAR_SOLISTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_SOLISTAActionPerformed
         // TODO add your handling code here:
