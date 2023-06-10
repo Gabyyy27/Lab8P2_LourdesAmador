@@ -5,11 +5,21 @@
  */
 package lab8p2;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 /**
  *
  * @author Lourdes
  */
 public class Simulador extends javax.swing.JFrame {
+
+    private List<Evento> listaEventos = new ArrayList<>();
 
     /**
      * Creates new form Simulador
@@ -51,17 +61,13 @@ public class Simulador extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        LISTA_CANCIONES_SOLISTA1 = new javax.swing.JTable();
         jd_TipoArtista = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         REGISTRAR_SOLISTA = new javax.swing.JButton();
@@ -108,13 +114,28 @@ public class Simulador extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         NUM_INTEGRANTES_BANDA = new javax.swing.JSpinner();
         DURACION_BANDA = new javax.swing.JSpinner();
+        jd_LoginAdministrador = new javax.swing.JDialog();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        USUARIO_ADMI = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        BOTON_INGRESAR_ADMI = new javax.swing.JButton();
+        CONTRASEÑA_ADMI = new javax.swing.JPasswordField();
+        jFrame1 = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel40 = new javax.swing.JLabel();
+        jd_TiempoEsperaRegistrarArtista = new javax.swing.JDialog();
+        jd_TiempoEsperaRegistrarEvento = new javax.swing.JDialog();
+        jd_TiempoEsperaRegistrarUsuario = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         REGISTRAR_ARTISTA = new javax.swing.JButton();
         REGISTRAR_EVENTO = new javax.swing.JButton();
         REGISTRAR_USUARIO = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton4 = new javax.swing.JButton();
+        ADMINISTRADOR = new javax.swing.JButton();
 
         BOTON_AGREGAR_EVENTO.setText("Agregar");
         BOTON_AGREGAR_EVENTO.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,27 +261,16 @@ public class Simulador extends javax.swing.JFrame {
         jList1.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(jList1);
 
-        jList2.setBackground(new java.awt.Color(0, 102, 102));
-        jList2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jList2.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane4.setViewportView(jList2);
-
-        jList3.setBackground(new java.awt.Color(0, 102, 102));
-        jList3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jList3.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane5.setViewportView(jList3);
-
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("AGREGAR");
+        jButton1.setText("ASISTIR");
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("AGREGAR");
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setText("AGREGAR");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("CANCIONES");
+        jButton2.setText("SEGUIR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("ARTISTAS");
@@ -270,6 +280,19 @@ public class Simulador extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("SELECCIONE & AGREGUE");
+
+        LISTA_CANCIONES_SOLISTA1.setBackground(new java.awt.Color(0, 102, 102));
+        LISTA_CANCIONES_SOLISTA1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        LISTA_CANCIONES_SOLISTA1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LISTA_CANCIONES_SOLISTA1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Canciones"
+            }
+        ));
+        jScrollPane7.setViewportView(LISTA_CANCIONES_SOLISTA1);
 
         javax.swing.GroupLayout jd_AgregarUsuarioLayout = new javax.swing.GroupLayout(jd_AgregarUsuario.getContentPane());
         jd_AgregarUsuario.getContentPane().setLayout(jd_AgregarUsuarioLayout);
@@ -302,25 +325,19 @@ public class Simulador extends javax.swing.JFrame {
                         .addComponent(btIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(39, 39, 39))
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(29, 29, 29))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarUsuarioLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(62, 62, 62)
+                .addGap(129, 129, 129)
                 .addComponent(jLabel3)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel2)
-                .addGap(57, 57, 57))
+                .addGap(107, 107, 107))
             .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel12)
@@ -336,22 +353,11 @@ public class Simulador extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
-                        .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
                     .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
                         .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
@@ -369,8 +375,16 @@ public class Simulador extends javax.swing.JFrame {
                             .addComponent(jLabel36)
                             .addComponent(EDAD_SOLISTA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
-                        .addComponent(btIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addComponent(btIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_AgregarUsuarioLayout.createSequentialGroup()
+                        .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_AgregarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))))
+                .addGap(57, 80, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -746,6 +760,171 @@ public class Simulador extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
+        jd_LoginAdministrador.setTitle("ADMINISTRADOR");
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel37.setText("Usuario:");
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel38.setText("Contraseña:");
+
+        USUARIO_ADMI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                USUARIO_ADMIMouseClicked(evt);
+            }
+        });
+        USUARIO_ADMI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                USUARIO_ADMIActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel39.setText("LOGIN");
+
+        BOTON_INGRESAR_ADMI.setBackground(new java.awt.Color(0, 102, 0));
+        BOTON_INGRESAR_ADMI.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BOTON_INGRESAR_ADMI.setForeground(new java.awt.Color(255, 255, 255));
+        BOTON_INGRESAR_ADMI.setText("INGRESAR");
+        BOTON_INGRESAR_ADMI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BOTON_INGRESAR_ADMIMouseClicked(evt);
+            }
+        });
+        BOTON_INGRESAR_ADMI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTON_INGRESAR_ADMIActionPerformed(evt);
+            }
+        });
+        BOTON_INGRESAR_ADMI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BOTON_INGRESAR_ADMIKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_LoginAdministradorLayout = new javax.swing.GroupLayout(jd_LoginAdministrador.getContentPane());
+        jd_LoginAdministrador.getContentPane().setLayout(jd_LoginAdministradorLayout);
+        jd_LoginAdministradorLayout.setHorizontalGroup(
+            jd_LoginAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_LoginAdministradorLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(jd_LoginAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BOTON_INGRESAR_ADMI, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_LoginAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_LoginAdministradorLayout.createSequentialGroup()
+                            .addComponent(jLabel37)
+                            .addGap(18, 18, 18)
+                            .addComponent(USUARIO_ADMI, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jd_LoginAdministradorLayout.createSequentialGroup()
+                            .addComponent(jLabel38)
+                            .addGap(18, 18, 18)
+                            .addComponent(CONTRASEÑA_ADMI))))
+                .addContainerGap(92, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_LoginAdministradorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel39)
+                .addGap(156, 156, 156))
+        );
+        jd_LoginAdministradorLayout.setVerticalGroup(
+            jd_LoginAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_LoginAdministradorLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel39)
+                .addGap(42, 42, 42)
+                .addGroup(jd_LoginAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(USUARIO_ADMI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jd_LoginAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(CONTRASEÑA_ADMI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(BOTON_INGRESAR_ADMI, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Accion", "Tiempo", "Persona"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable1);
+
+        jLabel40.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel40.setText("BITACORA");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(304, 304, 304)
+                .addComponent(jLabel40)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel40)
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout jd_TiempoEsperaRegistrarArtistaLayout = new javax.swing.GroupLayout(jd_TiempoEsperaRegistrarArtista.getContentPane());
+        jd_TiempoEsperaRegistrarArtista.getContentPane().setLayout(jd_TiempoEsperaRegistrarArtistaLayout);
+        jd_TiempoEsperaRegistrarArtistaLayout.setHorizontalGroup(
+            jd_TiempoEsperaRegistrarArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_TiempoEsperaRegistrarArtistaLayout.setVerticalGroup(
+            jd_TiempoEsperaRegistrarArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_TiempoEsperaRegistrarEventoLayout = new javax.swing.GroupLayout(jd_TiempoEsperaRegistrarEvento.getContentPane());
+        jd_TiempoEsperaRegistrarEvento.getContentPane().setLayout(jd_TiempoEsperaRegistrarEventoLayout);
+        jd_TiempoEsperaRegistrarEventoLayout.setHorizontalGroup(
+            jd_TiempoEsperaRegistrarEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_TiempoEsperaRegistrarEventoLayout.setVerticalGroup(
+            jd_TiempoEsperaRegistrarEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_TiempoEsperaRegistrarUsuarioLayout = new javax.swing.GroupLayout(jd_TiempoEsperaRegistrarUsuario.getContentPane());
+        jd_TiempoEsperaRegistrarUsuario.getContentPane().setLayout(jd_TiempoEsperaRegistrarUsuarioLayout);
+        jd_TiempoEsperaRegistrarUsuarioLayout.setHorizontalGroup(
+            jd_TiempoEsperaRegistrarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_TiempoEsperaRegistrarUsuarioLayout.setVerticalGroup(
+            jd_TiempoEsperaRegistrarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -802,14 +981,19 @@ public class Simulador extends javax.swing.JFrame {
         jToolBar1.setBorder(null);
         jToolBar1.setRollover(true);
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton4.setText("ADMINISTRADOR");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.setBorderPainted(false);
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        ADMINISTRADOR.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        ADMINISTRADOR.setText("ADMINISTRADOR");
+        ADMINISTRADOR.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ADMINISTRADOR.setBorderPainted(false);
+        ADMINISTRADOR.setFocusable(false);
+        ADMINISTRADOR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ADMINISTRADOR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ADMINISTRADOR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ADMINISTRADORMouseClicked(evt);
+            }
+        });
+        jToolBar1.add(ADMINISTRADOR);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -865,12 +1049,20 @@ public class Simulador extends javax.swing.JFrame {
     }//GEN-LAST:event_REGISTRAR_ARTISTAMouseClicked
 
     private void REGISTRAR_ARTISTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGISTRAR_ARTISTAActionPerformed
-        // TODO add your handling code here:
+// Agregar un tiempo de espera de 5 segundos antes de mostrar el JDialog
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jd_TipoArtista.pack();
+                jd_TipoArtista.setLocationRelativeTo(Simulador.this);
+                jd_TipoArtista.setModal(true);
+                jd_TipoArtista.setVisible(true);
+            }
+        });
+        timer.setRepeats(false); // Solo se ejecutará una vez
 
-        jd_TipoArtista.pack();
-        jd_TipoArtista.setLocationRelativeTo(this);
-        jd_TipoArtista.setModal(true);
-        jd_TipoArtista.setVisible(true);
+        timer.start();
+
     }//GEN-LAST:event_REGISTRAR_ARTISTAActionPerformed
 
     private void REGISTRAR_EVENTOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_REGISTRAR_EVENTOMouseClicked
@@ -901,47 +1093,47 @@ public class Simulador extends javax.swing.JFrame {
     }//GEN-LAST:event_REGISTRAR_USUARIOActionPerformed
 
     private void BOTON_AGREGAR_EVENTOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTON_AGREGAR_EVENTOMouseClicked
-        // TODO add your handling code here:
-        String nombre, contrasena, nom_art;
-        int edad;
-        try {
-            nombre = tnomcliente.getText();
-            contrasena = LUGAR_EVENTO.getText();
-            edad = Integer.parseInt(CIUDAD_EVENTO.getText());
+        // Obtener la fecha seleccionada del DateChooser
+        Date fechaSeleccionada = FECHA_EVENTO.getDate();
 
-            Cliente p = new Cliente(nombre, contrasena, edad);
+        // Obtener los demás datos ingresados por el usuario
+        String lugar = LUGAR_EVENTO.getText();
+        String ciudad = CIUDAD_EVENTO.getText();
+        int cantidadPersonas = (int) CANT_PERSONAS_EVENTO.getValue();
 
-            usuarios.add(p);
+        // Crear una instancia de la clase Evento con los datos ingresados
+        Evento evento = new Evento(fechaSeleccionada, lugar, ciudad, cantidadPersonas);
 
-            JOptionPane.showMessageDialog(this,
-                "Valores Ingresado Correctamente");
-            tnomcliente.setText("");
-            LUGAR_EVENTO.setText("");
-            CIUDAD_EVENTO.setText("");
+        // Agregar el nuevo evento a la lista
+        listaEventos.add(evento);
 
-            jd_AgregarEvento.setVisible(false);
+        // Agregar un tiempo de espera de 5 segundos antes de mostrar un mensaje de confirmación
+        Timer timer = new Timer(8000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Mostrar un mensaje de confirmación
+                JOptionPane.showMessageDialog(null, "El evento se ha creado exitosamente");
+            }
+        });
+        timer.setRepeats(false); // Solo se ejecutará una vez
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this,
-                "Ocurrio un error y no se guardaron los datos");
-        }
+        timer.start();
     }//GEN-LAST:event_BOTON_AGREGAR_EVENTOMouseClicked
+
 
     private void btIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btIngresarMouseClicked
         // TODO add your handling code here:
-        boolean bandera=false;
-        for(Usuario temp : usuarios){
+        boolean bandera = false;
+        for (Usuario temp : usuarios) {
             if (temp.getUsername().equals(tusuar.getText())
-                && temp.getPassword().equals(tcont.getText())
-            ){
+                    && temp.getPassword().equals(tcont.getText())) {
 
-                bandera= true;
+                bandera = true;
                 break;
             }
         }
 
-        if (bandera){
+        if (bandera) {
             tusuar.setText("");
             tcont.setText("");
             jButton1.setEnabled(false);
@@ -953,7 +1145,7 @@ public class Simulador extends javax.swing.JFrame {
             jd_AgregarUsuario.setVisible(false);
             jd_Ingresar.setVisible(false);
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(jd_Ingresar, "Usuario Equivocado");
         }
     }//GEN-LAST:event_btIngresarMouseClicked
@@ -964,11 +1156,11 @@ public class Simulador extends javax.swing.JFrame {
 
     private void btIngresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btIngresarKeyPressed
 
-        if (tcont.getText().length()>=0){
+        if (tcont.getText().length() >= 0) {
 
             btIngresar.setEnabled(true);
 
-        }else{
+        } else {
 
             btIngresar.setEnabled(false);
 
@@ -976,7 +1168,7 @@ public class Simulador extends javax.swing.JFrame {
     }//GEN-LAST:event_btIngresarKeyPressed
 
     private void tusuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tusuarMouseClicked
-        if(evt.getButton()==3){
+        if (evt.getButton() == 3) {
             // jPopupMenu2.show(jd_Ingresar, evt.getX(), evt.getY());
         }
 
@@ -1028,6 +1220,39 @@ public class Simulador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BOTON_AGREGAR_BANDAActionPerformed
 
+    private void USUARIO_ADMIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_USUARIO_ADMIMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USUARIO_ADMIMouseClicked
+
+    private void USUARIO_ADMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_USUARIO_ADMIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USUARIO_ADMIActionPerformed
+
+    private void BOTON_INGRESAR_ADMIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTON_INGRESAR_ADMIMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BOTON_INGRESAR_ADMIMouseClicked
+
+    private void BOTON_INGRESAR_ADMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTON_INGRESAR_ADMIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BOTON_INGRESAR_ADMIActionPerformed
+
+    private void BOTON_INGRESAR_ADMIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BOTON_INGRESAR_ADMIKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BOTON_INGRESAR_ADMIKeyPressed
+
+    private void ADMINISTRADORMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADMINISTRADORMouseClicked
+        // TODO add your handling code here:
+
+        jd_LoginAdministrador.pack();
+        jd_LoginAdministrador.setLocationRelativeTo(this);
+        jd_LoginAdministrador.setModal(true);
+        jd_LoginAdministrador.setVisible(true);
+    }//GEN-LAST:event_ADMINISTRADORMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1042,16 +1267,24 @@ public class Simulador extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Simulador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Simulador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Simulador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Simulador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1064,13 +1297,16 @@ public class Simulador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ADMINISTRADOR;
     private javax.swing.JButton BOTON_AGREGAR_BANDA;
     private javax.swing.JButton BOTON_AGREGAR_EVENTO;
     private javax.swing.JButton BOTON_AGREGAR_SOLISTA;
+    private javax.swing.JButton BOTON_INGRESAR_ADMI;
     private javax.swing.JTextField CANCION_BANDA;
     private javax.swing.JTextField CANCION_SOLISTA;
     private javax.swing.JSpinner CANT_PERSONAS_EVENTO;
     private javax.swing.JTextField CIUDAD_EVENTO;
+    private javax.swing.JPasswordField CONTRASEÑA_ADMI;
     private javax.swing.JTextField CONTRASEÑA_BANDA;
     private javax.swing.JTextField CONTRASEÑA_SOLISTA;
     private javax.swing.JSpinner DURACION_BANDA;
@@ -1082,6 +1318,7 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JTextField GENERO_SOLISTA;
     private javax.swing.JTable LISTA_CANCIONES_BANDA;
     private javax.swing.JTable LISTA_CANCIONES_SOLISTA;
+    private javax.swing.JTable LISTA_CANCIONES_SOLISTA1;
     private javax.swing.JTextField LUGAR_EVENTO;
     private javax.swing.JTextField NOMBRE_BANDA;
     private javax.swing.JTextField NOMBRE_SOLISTA;
@@ -1092,13 +1329,13 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JButton REGISTRAR_EVENTO;
     private javax.swing.JButton REGISTRAR_SOLISTA;
     private javax.swing.JButton REGISTRAR_USUARIO;
+    private javax.swing.JTextField USUARIO_ADMI;
     private javax.swing.JTextField USUARIO_BANDA;
     private javax.swing.JTextField USUARIO_SOLISTA;
     private javax.swing.JButton btIngresar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1110,7 +1347,6 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1129,26 +1365,34 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JDialog jd_AgregarBanda;
     private javax.swing.JDialog jd_AgregarEvento;
     private javax.swing.JDialog jd_AgregarSolista;
     private javax.swing.JDialog jd_AgregarUsuario;
+    private javax.swing.JDialog jd_LoginAdministrador;
+    private javax.swing.JDialog jd_TiempoEsperaRegistrarArtista;
+    private javax.swing.JDialog jd_TiempoEsperaRegistrarEvento;
+    private javax.swing.JDialog jd_TiempoEsperaRegistrarUsuario;
     private javax.swing.JDialog jd_TipoArtista;
     private javax.swing.JTextField tcont;
     private javax.swing.JTextField tusuar;
