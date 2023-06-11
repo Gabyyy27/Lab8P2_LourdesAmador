@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab8p2;
+package Lab8P2_LourdesA;
 
 
 import java.util.Date;
 
-public class Evento {
+public class EventoPersonalizado {
     private Date fecha;
     private String ciudad;
     private String lugar;
     private int capacidadPersonas;
     
-    public Evento(Date fecha, String ciudad, String lugar, int capacidadPersonas) {
+    public EventoPersonalizado(Date fecha, String ciudad, String lugar, int capacidadPersonas) {
         this.fecha = fecha;
         this.ciudad = ciudad;
         this.lugar = lugar;

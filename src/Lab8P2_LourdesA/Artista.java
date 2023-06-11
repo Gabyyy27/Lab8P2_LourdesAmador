@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab8p2;
+package Lab8P2_LourdesA;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public abstract class Artista {
     private String contraseña;
     private String nombre;
     private String generoMusical;
-    private ArrayList<Cancion> listaCanciones;
+    private ArrayList<Canciones> listaCanciones;
     
     public Artista(String usuario, String contraseña, String nombre, String generoMusical) {
         this.usuario = usuario;
@@ -42,11 +42,11 @@ public abstract class Artista {
         return generoMusical;
     }
     
-    public ArrayList<Cancion> getListaCanciones() {
+    public ArrayList<Canciones> getListaCanciones() {
         return listaCanciones;
     }
     
-    public void agregarCancion(Cancion cancion) {
+    public void agregarCancion(Canciones cancion) {
         listaCanciones.add(cancion);
     }
 }

@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab8p2;
+package Lab8P2_LourdesA;
 
 /**
  *
  * @author Lourdes
  */
-public class Cancion {
+public class Canciones {
     private String nombre;
     private int duracionSegundos;
 
-    public Cancion(String nombre, int duracionSegundos) {
+    public Canciones(String nombre, int duracionSegundos) {
         this.nombre = nombre;
         this.duracionSegundos = duracionSegundos;
     }
