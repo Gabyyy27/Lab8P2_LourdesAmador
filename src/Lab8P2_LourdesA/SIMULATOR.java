@@ -7,6 +7,8 @@ package Lab8P2_LourdesA;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,8 +17,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.ProgressMonitor;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,8 +32,10 @@ public class SIMULATOR extends javax.swing.JFrame {
     private List<Eventos> listaEventos;
     private List<String[]> data;
     private DefaultTableModel tablaCancionesModel;
+    private DefaultTableModel Model;
 
     private List<Artista> listaArtistas = new ArrayList<>();
+    private Bitacora bitacora; // Declarar la variable de instancia
 
     /**
      * Creates new form Simulador
@@ -41,6 +43,7 @@ public class SIMULATOR extends javax.swing.JFrame {
     public SIMULATOR() {
         initComponents();
         ab = new administrarBarra2(pg_3);
+        bitacora = new Bitacora(); // Inicializar la variable de instancia
 
         CANCIONES_SOLISTASModel = new DefaultTableModel();
         CANCIONES_SOLISTASModel = new DefaultTableModel();
@@ -85,7 +88,17 @@ public class SIMULATOR extends javax.swing.JFrame {
         for (String[] row : data) {
             tablaCancionesModel.addRow(row);
         }
+        Model = new DefaultTableModel();
+        Model.addColumn("Artista");
+        Model.addColumn("Canción");
+        data = new ArrayList<>();
+
+        // Agregar los datos al modelo de la tabla
+        for (String[] row : data) {
+            Model.addRow(row);
+        }
         // Asignar modelos a las tablas y al ComboBox
+        LISTA_ARTISTAS.setModel(Model);
         tablaCanciones.setModel(tablaCancionesModel);
         comboBoxEventos.setModel(comboBoxEventoModel);
 
@@ -229,7 +242,7 @@ public class SIMULATOR extends javax.swing.JFrame {
         BITACORA = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaBitacora = new javax.swing.JTable();
         jLabel41 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         SIMULACION = new javax.swing.JDialog();
@@ -971,7 +984,7 @@ public class SIMULATOR extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaBitacora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -979,13 +992,18 @@ public class SIMULATOR extends javax.swing.JFrame {
                 "Accion", "Tiempo", "Persona"
             }
         ));
-        jScrollPane8.setViewportView(jTable2);
+        jScrollPane8.setViewportView(tablaBitacora);
 
         jLabel41.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 153, 51));
         jLabel41.setText("BITACORA");
 
         jButton4.setText("ELIMINAR");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1356,6 +1374,8 @@ public class SIMULATOR extends javax.swing.JFrame {
             // Cerrar los flujos de escritura
             printWriter.close();
             fileWriter.close();
+            // Agregar la acción a la bitácora
+            bitacora.agregarAccion("Se ha guardado un nuevo evento: " + event.getLugar());
 
         } catch (IOException e) {
             System.out.println("Error al guardar el evento en el archivo");
@@ -1372,25 +1392,25 @@ public class SIMULATOR extends javax.swing.JFrame {
 
         Usuario us = new Usuario(usuario, contraseña, nombre, edad);
         // Agregar un tiempo de espera de 5 segundos antes de guardar
-//        Timer timer = new Timer(5000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        // Guardar el solista en la base de datos, archivo, etc.
-        guardarUsuario(us);
+                // Guardar el usuario en la base de datos, archivo, etc.
+                guardarUsuario(us);
 
-        // Mostrar un mensaje de confirmación
-        //JOptionPane.showMessageDialog(null, "El Usuario se ha creado exitosamente");
-        // Restablecer los campos de entrada
-        USUARIO_USUARIO.setText("");
-        CONTRASEÑA_USUARIO.setText("");
-        NOMBRE_USUARIO.setText("");
-        EDAD_USUARIO.setValue(0);
-//            }
-//        });
-//        timer.setRepeats(false); // Solo se ejecutará una vez
-//
-//        timer.start();
+                // Mostrar un mensaje de confirmación
+                //JOptionPane.showMessageDialog(null, "El Usuario se ha creado exitosamente");
+                // Restablecer los campos de entrada
+                USUARIO_USUARIO.setText("");
+                CONTRASEÑA_USUARIO.setText("");
+                NOMBRE_USUARIO.setText("");
+                EDAD_USUARIO.setValue(0);
+            }
+        });
+        timer.setRepeats(false); // Solo se ejecutará una vez
+
+        timer.start();
 
     }//GEN-LAST:event_BOTON_AGREGAR_USUARIOMouseClicked
 
@@ -1411,6 +1431,8 @@ public class SIMULATOR extends javax.swing.JFrame {
             // Cerrar los flujos de escritura
             printWriter.close();
             fileWriter.close();
+            // Agregar la acción a la bitácora
+            bitacora.agregarAccion("Se ha guardado un nuevo usuario: " + us.getNombre());
 
         } catch (IOException e) {
             System.out.println("Error al guardar el usuario en el archivo");
@@ -1506,6 +1528,8 @@ public class SIMULATOR extends javax.swing.JFrame {
             printWriter.close();
             fileWriter.close();
 
+            // Agregar la acción a la bitácora
+            bitacora.agregarAccion("Se ha guardado un nuevo solista: " + solista.getNombre());
         } catch (IOException e) {
             System.out.println("Error al guardar el solista en el archivo");
             e.printStackTrace();
@@ -1580,6 +1604,8 @@ public class SIMULATOR extends javax.swing.JFrame {
             printWriter.close();
             fileWriter.close();
 
+            // Agregar la acción a la bitácora
+            bitacora.agregarAccion("Se ha guardado una nueva banda: " + banda.getNombre());
         } catch (IOException e) {
             System.out.println("Error al guardar la banda en el archivo");
             e.printStackTrace();
@@ -1716,19 +1742,42 @@ public class SIMULATOR extends javax.swing.JFrame {
 
     private void CARGAR_LISTA_ARTISTASMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CARGAR_LISTA_ARTISTASMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Artista");
-        model.addColumn("Canción");
 
         for (Artista artista : listaArtistas) {
             for (Canciones cancion : artista.getListaCanciones()) {
                 Object[] rowData = {artista.getNombre(), cancion.getNombre()};
-                model.addRow(rowData);
+                Model.addRow(rowData);
             }
         }
 
-        LISTA_ARTISTAS.setModel(model);
+        LISTA_ARTISTAS.setModel(Model);
     }//GEN-LAST:event_CARGAR_LISTA_ARTISTASMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tablaBitacoraModel = (DefaultTableModel) tablaBitacora.getModel();
+        try {
+            // Leer el archivo de bitácora y agregar los datos a la tabla
+            FileReader fileReader = new FileReader("./bitacora.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(" ");
+                Object[] rowData = {data[0], data[1], data[2]};
+                tablaBitacoraModel.addRow(rowData);
+            }
+            bufferedReader.close();
+            fileReader.close();
+
+            // Actualizar la vista de la tabla
+            tablaBitacora.revalidate();
+            tablaBitacora.repaint();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1738,8 +1787,12 @@ public class SIMULATOR extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         */// Crear la instancia de Bitacora
+        // Crear la instancia de Bitacora
+        SIMULATOR simulator = new SIMULATOR(); // Crear una instancia de SIMULATOR para acceder a la variable de instancia bitacora
+
         try {
+
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -1767,10 +1820,15 @@ public class SIMULATOR extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new SIMULATOR().setVisible(true);
             }
-        });
+        }
+        );
+        // Al finalizar, guardar la bitácora
+        simulator.bitacora.guardarBitacora();
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1874,7 +1932,6 @@ public class SIMULATOR extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable jTable2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JDialog jd_AgregarBanda;
     private javax.swing.JDialog jd_AgregarEvento;
@@ -1884,6 +1941,7 @@ public class SIMULATOR extends javax.swing.JFrame {
     private javax.swing.JDialog jd_TipoArtista;
     private javax.swing.JProgressBar pg_1;
     private javax.swing.JProgressBar pg_3;
+    private javax.swing.JTable tablaBitacora;
     private javax.swing.JTable tablaCanciones;
     // End of variables declaration//GEN-END:variables
 administrarBarra2 ab;

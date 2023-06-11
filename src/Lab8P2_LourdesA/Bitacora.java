@@ -9,69 +9,51 @@ package Lab8P2_LourdesA;
  *
  * @author Lourdes
  */
-import java.io.*;
-import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class Bitacora implements Serializable {
-    private List<RegistroActividad> registros;
+public class Bitacora {
+    private List<String> acciones;
 
     public Bitacora() {
-        registros = new ArrayList<>();
+        acciones = new ArrayList<>();
     }
 
-    public void registrarActividad(String accion, String persona) {
-        Date tiempo = new Date();
-        RegistroActividad registro = new RegistroActividad(accion, tiempo, persona);
-        registros.add(registro);
-        guardarBitacora();
+    public void agregarAccion(String accion) {
+        // Obtener la hora actual del sistema
+        Date horaActual = new Date();
+        // Formatear la hora en un formato legible
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        String horaFormateada = formatoHora.format(horaActual);
+
+        // Construir el registro de acción
+        String registroAccion = horaFormateada + " - Usuario1: " + accion;
+
+        // Agregar el registro a la lista de acciones
+        acciones.add(registroAccion);
     }
 
-    public void mostrarBitacora() {
-        for (RegistroActividad registro : registros) {
-            System.out.println(registro);
-        }
-    }
-
-    private void guardarBitacora() {
+    public void guardarBitacora() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("bitacora.dat");
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(this);
-            objectOut.close();
-            fileOut.close();
+            FileWriter fileWriter = new FileWriter("bitacora.txt", true);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+
+            // Escribir las acciones en el archivo
+            for (String accion : acciones) {
+                printWriter.println(accion);
+            }
+
+            printWriter.close();
+            fileWriter.close();
         } catch (IOException e) {
+            System.out.println("Error al guardar la bitácora");
             e.printStackTrace();
-        }
-    }
-
-    public static Bitacora cargarBitacora() {
-        Bitacora bitacora = null;
-        try {
-            FileInputStream fileIn = new FileInputStream("bitacora.dat");
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            bitacora = (Bitacora) objectIn.readObject();
-            objectIn.close();
-            fileIn.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return bitacora;
-    }
-
-    private static class RegistroActividad implements Serializable {
-        private String accion;
-        private Date tiempo;
-        private String persona;
-
-        public RegistroActividad(String accion, Date tiempo, String persona) {
-            this.accion = accion;
-            this.tiempo = tiempo;
-            this.persona = persona;
-        }
-
-        @Override
-        public String toString() {
-            return "Acción: " + accion + ", Tiempo: " + tiempo + ", Persona: " + persona;
         }
     }
 }
